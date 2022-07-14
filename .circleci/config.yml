@@ -9,11 +9,9 @@ jobs:
     docker:
        - image: circleci/node:13.8.0
     steps:
-      - run:
-          name: "save output"
-          command: "echo helloworld > output.txt"
+      - run: echo "helloworld" > ~/output.txt"
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/
           paths:
             - output.txt
   printfile:
@@ -21,10 +19,8 @@ jobs:
        - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: "printoutput"
-          command: "cat output.txt"
+          at: ~/
+      - run: cat ~/output.txt
 workflows:
   print_output:
     jobs:
