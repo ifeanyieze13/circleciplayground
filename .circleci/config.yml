@@ -23,7 +23,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: "print output"
+          name: "printoutput"
           command: "cat output.txt"
 workflows:
   print_output:
